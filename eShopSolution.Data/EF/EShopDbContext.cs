@@ -1,5 +1,6 @@
 ﻿using eShopSolution.Data.Configurations;
 using eShopSolution.Data.Entities;
+using eShopSolution.Data.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Identity.Client;
@@ -53,7 +54,8 @@ namespace eShopSolution.Data.EF
            // modelBuilder.Entity<IdentityUserToken<Guid>>().ToTable("AppUserTokens").HasKey(x => x.UserId);
 
             //Data seeding
-          //  modelBuilder.Seed();
+
+           modelBuilder.Seed();
             //base.OnModelCreating(modelBuilder);
            
         }

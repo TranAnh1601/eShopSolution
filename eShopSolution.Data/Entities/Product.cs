@@ -16,12 +16,12 @@ namespace eShopSolution.Data.Entities
         public int ViewCount { set; get; }
         public DateTime DateCreated { set; get; }
 
-        public string SeoAlias { set; get; }
+       // public string SeoAlias { set; get; }
 
 
-       public bool? IsFeatured { get; set; }
+        public bool? IsFeatured { get; set; }
 
-       public List<ProductInCategory> ProductInCategories { get; set; } // list lien ket  khoa ngoai
+        public List<ProductInCategory> ProductInCategories { get; set; } // list lien ket  khoa ngoai
 
         public List<OrderDetail> OrderDetails { get; set; }
 
