@@ -12,18 +12,22 @@ namespace eShopSolution.Data.Entities
 
         public int ProductId { get; set; }
 
+        //url
         public string ImagePath { get; set; }
 
         public string Caption { get; set; }
 
+        //tuy chon anh mac dinh
         public bool IsDefault { get; set; }
 
         public DateTime DateCreated { get; set; }
 
+        //thu tu
         public int SortOrder { get; set; }
 
         public long FileSize { get; set; }
 
+        // lien ket product
         public Product Product { get; set; }
     }
 }

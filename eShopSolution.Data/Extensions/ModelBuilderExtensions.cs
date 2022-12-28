@@ -1,5 +1,6 @@
 ﻿using eShopSolution.Data.Entities;
 using eShopSolution.Data.Enums;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -89,11 +90,38 @@ namespace eShopSolution.Data.Extensions
                 );
 
             // any guid
-           
+            var roleId = new Guid("A6CC23A9-3417-41AF-993C-B815F8192246");
+            var adminId = new Guid("BFCD74CB-AF46-4F94-842D-F8BD1731D8BA");
 
-           
+            modelBuilder.Entity<AppRole>().HasData(new AppRole
+            {
+                Id = roleId,
+                Name = "admin",
+                NormalizedName = "admin",
+                Description = "Administrator role"
+            });
 
-            
+            var hasher = new PasswordHasher<AppUser>();
+            modelBuilder.Entity<AppUser>().HasData(new AppUser
+            {
+                Id = adminId,
+                UserName = "admin",
+                NormalizedUserName = "admin",
+                Email = "fomust1969@gmail.com",
+                NormalizedEmail = "fomust1969@gmail.com",
+                EmailConfirmed = true,
+                PasswordHash = hasher.HashPassword(null, "123456789aA@"),
+                SecurityStamp = string.Empty,
+                FirstName = "Anh",
+                LastName = "Tuan",
+                Dob = new DateTime(2022, 12, 02)
+            });
+
+            modelBuilder.Entity<IdentityUserRole<Guid>>().HasData(new IdentityUserRole<Guid>
+            {
+                RoleId = roleId,
+                UserId = adminId
+            });
 
             modelBuilder.Entity<Slide>().HasData(
               new Slide() { Id = 1, Name = "Second Thumbnail label", Description = "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.", SortOrder = 1, Url = "#", Image = "/themes/images/carousel/1.png", Status = Status.Active },
